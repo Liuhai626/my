@@ -1,132 +1,67 @@
-// 滚动动画效果
-document.addEventListener('DOMContentLoaded', function() {
-  const sections = document.querySelectorAll('section');
+// 轮播图功能
+const carousel = document.querySelector('.carousel');
+const carouselInner = carousel.querySelector('.carousel-inner');
+const carouselItems = carousel.querySelectorAll('.carousel-item');
+const prevButton = carousel.querySelector('.carousel-prev');
+const nextButton = carousel.querySelector('.carousel-next');
+const indicators = carousel.querySelectorAll('.carousel-indicator');
+
+let currentIndex = 0;
+let autoPlayInterval;
+
+function updateCarousel() {
+  const offset = -currentIndex * 100;
+  carouselInner.style.transform = `translateX(${offset}%)`;
   
-  const observerOptions = {
-    threshold: 0.1
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, observerOptions);
-
-  sections.forEach(section => {
-    observer.observe(section);
+  // 更新指示器状态
+  indicators.forEach((indicator, index) => {
+    indicator.classList.toggle('active', index === currentIndex);
   });
+}
 
-  // 平滑滚动
-  document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      document.querySelector(targetId).scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
-  });
-
-  // 项目过滤功能
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const projects = document.querySelectorAll('.project-item');
-
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      // 移除所有按钮的 active 类
-      filterButtons.forEach(btn => btn.classList.remove('active'));
-      // 为当前按钮添加 active 类
-      button.classList.add('active');
-      
-      const filter = button.dataset.filter;
-      
-      projects.forEach(project => {
-        const projectType = project.dataset.type;
-        if (filter === 'all' || projectType === filter) {
-          project.style.display = 'block';
-        } else {
-          project.style.display = 'none';
-        }
-      });
-    });
-  });
-
-  // 轮播图功能
-  const carousel = document.querySelector('.carousel');
-  const carouselInner = carousel.querySelector('.carousel-inner');
-  const carouselItems = carousel.querySelectorAll('.carousel-item');
-  const prevBtn = carousel.querySelector('.prev');
-  const nextBtn = carousel.querySelector('.next');
-  
-  let currentIndex = 0;
-  let autoPlayInterval;
-
-  function showSlide(index) {
-    const offset = -index * 100;
-    carouselInner.style.transform = `translateX(${offset}%)`;
-    carouselItems.forEach((item, i) => {
-      item.classList.toggle('active', i === index);
-    });
+function moveToIndex(index) {
+  if (index < 0) {
+    currentIndex = carouselItems.length - 1;
+  } else if (index >= carouselItems.length) {
+    currentIndex = 0;
+  } else {
+    currentIndex = index;
   }
+  updateCarousel();
+}
 
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % carouselItems.length;
-    showSlide(currentIndex);
-  }
+function startAutoPlay() {
+  autoPlayInterval = setInterval(() => {
+    moveToIndex(currentIndex + 1);
+  }, 5000);
+}
 
-  function prevSlide() {
-    currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
-    showSlide(currentIndex);
-  }
+function stopAutoPlay() {
+  clearInterval(autoPlayInterval);
+}
 
-  function startAutoPlay() {
-    autoPlayInterval = setInterval(nextSlide, 5000);
-  }
-
-  function stopAutoPlay() {
-    clearInterval(autoPlayInterval);
-  }
-
-  // 初始化
-  showSlide(currentIndex);
-  startAutoPlay();
-
-  // 事件监听
-  nextBtn.addEventListener('click', () => {
-    stopAutoPlay();
-    nextSlide();
-    startAutoPlay();
-  });
-
-  prevBtn.addEventListener('click', () => {
-    stopAutoPlay();
-    prevSlide();
-    startAutoPlay();
-  });
-
-  // 触摸滑动支持
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  carousel.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-  });
-
-  carousel.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].clientX;
-    handleSwipe();
-  });
-
-  function handleSwipe() {
-    const swipeThreshold = 50;
-    const deltaX = touchEndX - touchStartX;
-
-    if (deltaX > swipeThreshold) {
-      prevSlide();
-    } else if (deltaX < -swipeThreshold) {
-      nextSlide();
-    }
-  }
+// 事件监听
+prevButton.addEventListener('click', () => {
+  stopAutoPlay();
+  moveToIndex(currentIndex - 1);
 });
+
+nextButton.addEventListener('click', () => {
+  stopAutoPlay();
+  moveToIndex(currentIndex + 1);
+});
+
+indicators.forEach((indicator, index) => {
+  indicator.addEventListener('click', () => {
+    stopAutoPlay();
+    moveToIndex(index);
+  });
+});
+
+// 鼠标悬停时暂停自动播放
+carousel.addEventListener('mouseenter', stopAutoPlay);
+carousel.addEventListener('mouseleave', startAutoPlay);
+
+// 初始化
+updateCarousel();
+startAutoPlay();

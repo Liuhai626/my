@@ -9,6 +9,7 @@
 <body>
   <header>
     <nav>
+      <div class="logo">刘海 | 个人网站</div>
       <ul>
         <li><a href="#home">首页</a></li>
         <li><a href="#about">关于我</a></li>
@@ -18,124 +19,102 @@
     </nav>
   </header>
 
-  <section id="home">
-    <h1>刘海 - 资源环境信息工程研究生</h1>
-    <p class="intro">我是华中农业大学资源与环境学院资源环境信息工程的一名学术型硕士研究生，研究课题为基于多时相 SAR 数据的作物识别及种植面积提取研究。</p>
-    <div class="cta-buttons">
-      <a href="#about" class="btn">了解更多</a>
-      <a href="#portfolio" class="btn">查看作品</a>
-    </div>
-  </section>
+  <main class="grid-container">
+    <section id="home">
+      <h1>刘海 - 资源环境信息工程研究生</h1>
+      <p class="intro">我是华中农业大学资源与环境学院资源环境信息工程的一名学术型硕士研究生，研究课题为基于多时相 SAR 数据的作物识别及种植面积提取研究。</p>
+      <div class="cta-buttons">
+        <a href="#about" class="btn">了解更多</a>
+        <a href="#portfolio" class="btn">查看作品</a>
+      </div>
+    </section>
 
-  <section id="about">
-    <h2>关于我</h2>
-    <div class="about-content">
-      <div class="bio">
-        <h3>个人简介</h3>
-        <p>我是华中农业大学资源与环境学院资源环境信息工程的一名学术型硕士研究生，专注于遥感技术在农业领域的应用研究。</p>
-        <div class="achievements">
-          <h4>荣誉与奖项</h4>
+    <section id="about">
+      <h2>关于我</h2>
+      <div class="about-content">
+        <div class="card">
+          <h3>个人简介</h3>
+          <p>我是华中农业大学资源与环境学院资源环境信息工程的一名学术型硕士研究生，专注于遥感技术在农业领域的应用研究。</p>
+        </div>
+        <div class="card">
+          <h3>技能</h3>
           <ul>
-            <li>本科就读于山西农业大学</li>
-            <li>曾获专业三等奖学金</li>
-            <li>2022年度校级优秀心理委员</li>
+            <li>遥感影像处理与分析</li>
+            <li>多时相 SAR 数据处理</li>
+            <li>作物识别与分类算法</li>
+            <li>空间数据分析与GIS应用</li>
+            <li>机器学习在农业遥感中的应用</li>
           </ul>
         </div>
-      </div>
-      <div class="skills">
-        <h3>技能</h3>
-        <ul>
-          <li>遥感影像处理与分析</li>
-          <li>多时相 SAR 数据处理</li>
-          <li>作物识别与分类算法</li>
-          <li>空间数据分析与GIS应用</li>
-          <li>机器学习在农业遥感中的应用</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="portfolio">
-    <h2>作品展示</h2>
-    <div id="projects-container">
-      <div class="project-filter">
-        <button class="filter-btn active" data-filter="all">全部</button>
-        <button class="filter-btn" data-filter="web">网页设计</button>
-        <button class="filter-btn" data-filter="photo">摄影作品</button>
-      </div>
-      <div id="article-container">
-        <div class="photo-gallery">
-          <div class="photo-item">
-            <img src="images/photos/1.jpg" alt="摄影作品 1">
-            <div class="photo-caption">作品 1</div>
-          </div>
-          <div class="photo-item">
-            <img src="images/photos/2.jpg" alt="摄影作品 2">
-            <div class="photo-caption">作品 2</div>
-          </div>
-          <div class="photo-item">
-            <img src="images/photos/3.jpg" alt="摄影作品 3">
-            <div class="photo-caption">作品 3</div>
-          </div>
-          <div class="photo-item">
-            <img src="images/photos/4.jpg" alt="摄影作品 4">
-            <div class="photo-caption">作品 4</div>
-          </div>
-          <div class="photo-item">
-            <img src="images/photos/5.jpg" alt="摄影作品 5">
-            <div class="photo-caption">作品 5</div>
-          </div>
-          <div class="photo-item">
-            <img src="images/photos/6.jpg" alt="摄影作品 6">
-            <div class="photo-caption">作品 6</div>
-          </div>
-        </div>
-        
-        <!-- 轮播图部分 -->
-        <div class="carousel-container">
-          <div class="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="images/photos/1.jpg" alt="摄影作品 1">
-              </div>
-              <div class="carousel-item">
-                <img src="images/photos/2.jpg" alt="摄影作品 2">
-              </div>
-              <div class="carousel-item">
-                <img src="images/photos/3.jpg" alt="摄影作品 3">
-              </div>
-              <div class="carousel-item">
-                <img src="images/photos/4.jpg" alt="摄影作品 4">
-              </div>
-              <div class="carousel-item">
-                <img src="images/photos/5.jpg" alt="摄影作品 5">
-              </div>
-              <div class="carousel-item">
-                <img src="images/photos/6.jpg" alt="摄影作品 6">
-              </div>
+        <div class="card honors-section">
+          <h3>荣誉与成就</h3>
+          <div class="honors-list">
+            <div class="honor-item">
+              <h4>优秀研究生奖学金</h4>
+              <p>2024年，华中农业大学</p>
             </div>
-            <button class="carousel-control prev">&#10094;</button>
-            <button class="carousel-control next">&#10095;</button>
+            <div class="honor-item">
+              <h4>全国大学生数学建模竞赛二等奖</h4>
+              <p>2023年，中国工业与应用数学学会</p>
+            </div>
+            <div class="honor-item">
+              <h4>学术论文发表</h4>
+              <p>2024年，遥感领域顶级期刊</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contact">
-    <h2>联系我</h2>
-    <div class="contact-info">
-      <p>邮箱：<a href="mailto:2482153088@qq.com">2482153088@qq.com</a></p>
-      <div class="social-links">
-        <a href="#" class="social-link">GitHub</a>
-        <a href="#" class="social-link">LinkedIn</a>
-        <a href="#" class="social-link">微博</a>
+    <section id="portfolio">
+      <h2>作品展示</h2>
+      <div class="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="images/photos/1.jpg" alt="作品 1">
+          </div>
+          <div class="carousel-item">
+            <img src="images/photos/2.jpg" alt="作品 2">
+          </div>
+          <div class="carousel-item">
+            <img src="images/photos/3.jpg" alt="作品 3">
+          </div>
+          <div class="carousel-item">
+            <img src="images/photos/4.jpg" alt="作品 4">
+          </div>
+          <div class="carousel-item">
+            <img src="images/photos/5.jpg" alt="作品 5">
+          </div>
+          <div class="carousel-item">
+            <img src="images/photos/6.jpg" alt="作品 6">
+          </div>
+        </div>
+        <button class="carousel-control carousel-prev">&#10094;</button>
+        <button class="carousel-control carousel-next">&#10095;</button>
+        <div class="carousel-indicators">
+          <span class="carousel-indicator active"></span>
+          <span class="carousel-indicator"></span>
+          <span class="carousel-indicator"></span>
+          <span class="carousel-indicator"></span>
+          <span class="carousel-indicator"></span>
+          <span class="carousel-indicator"></span>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <section id="contact">
+      <h2>联系方式</h2>
+      <div class="contact-info">
+        <p>邮箱：<a href="mailto:2482153088@qq.com">2482153088@qq.com</a></p>
+        <div class="social-links">
+          <a href="#" class="social-link">GitHub</a>
+          <a href="#" class="social-link">LinkedIn</a>
+          <a href="#" class="social-link">微博</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <script src="js/main.js"></script>
-  <script src="js/markdown-loader.js"></script>
 </body>
 </html>
